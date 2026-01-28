@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const taskRoutes = require('./routes/taskRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const AppError = require('./utils/AppError');
@@ -6,6 +7,7 @@ const AppError = require('./utils/AppError');
 const app = express();
 
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:5173' }));
 
 // Routes
 app.use('/api/v1/tasks', taskRoutes);
